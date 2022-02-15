@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.anm.TresEnRaya.Tablero;
+
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -13,12 +16,20 @@ import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class interfazG extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField1;
 	private JTextField textField2;
+	private Tablero tablero;
+	
 
 	/**
 	 * Launch the application.
@@ -55,38 +66,91 @@ public class interfazG extends JFrame {
 		panelButtons.setLayout(null);
 		
 		JButton btn00 = new JButton("");
+		btn00.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tablero.jugarCasilla('X', 0, 0);
+			}
+		});
 		btn00.setBounds(10, 11, 100, 100);
 		panelButtons.add(btn00);
 		
 		JButton btn01 = new JButton("");
+		btn01.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 1, 0);
+			}
+		});
 		btn01.setBounds(120, 11, 100, 100);
 		panelButtons.add(btn01);
 		
 		JButton btn02 = new JButton("");
+		btn02.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 2, 0);
+			}
+		});
 		btn02.setBounds(230, 11, 100, 100);
 		panelButtons.add(btn02);
 		
 		JButton btn10 = new JButton("");
+		btn10.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 0, 1);
+			}
+		});
 		btn10.setBounds(10, 122, 100, 100);
 		panelButtons.add(btn10);
 		
 		JButton btn11 = new JButton("");
+		btn11.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 1, 1);
+			}
+		});
 		btn11.setBounds(120, 122, 100, 100);
 		panelButtons.add(btn11);
 		
 		JButton btn12 = new JButton("");
+		btn12.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 2, 1);
+			}
+		});
 		btn12.setBounds(230, 122, 100, 100);
 		panelButtons.add(btn12);
 		
 		JButton btn20 = new JButton("");
+		btn20.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 0, 2);
+			}
+		});
 		btn20.setBounds(10, 233, 100, 100);
 		panelButtons.add(btn20);
 		
 		JButton btn21 = new JButton("");
+		btn21.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				tablero.jugarCasilla('X', 1, 2);
+			}
+		});
 		btn21.setBounds(120, 233, 100, 100);
 		panelButtons.add(btn21);
 		
 		JButton btn22 = new JButton("");
+		btn22.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tablero.jugarCasilla('X', 2, 2);
+			}
+		});
 		btn22.setBounds(230, 233, 100, 100);
 		panelButtons.add(btn22);
 		
