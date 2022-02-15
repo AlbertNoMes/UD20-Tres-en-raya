@@ -2,6 +2,8 @@ package com.anm.TresEnRaya;
 
 import java.util.Random;
 
+import vista.interfazG;
+
 public class Tablero {
 	private char[][] tablero;
 	/*
@@ -9,14 +11,17 @@ public class Tablero {
 	 * [1,2][2,2][3,2]
 	 * [1,3][2,3][3,3]
 	 */
+	
 	public Tablero() {
 		tablero = new char[3][3];
 	}
 	
-	public void jugarCasilla(char op, int x,int y) {
+	public boolean jugarCasilla(char op, int x,int y) {
 		if(tablero[x][y] != 'X' && tablero[x][y] != 'O')
 			if(x < 3 && x >= 0 && y < 3 && y >= 0 && (op == 'X' || op == 'O'))
 				tablero[x][y] = op;
+		
+		return tablero[x][y] != 'X' && tablero[x][y] != 'O';
 	}
 	
 	public Pair<Boolean,Character> finDeJuego() {
@@ -84,7 +89,8 @@ public class Tablero {
 		return new Pair<Boolean, Character>(fin,ganador);
 	}
 	
-	public void jugarCPU() {
+	
+	public int[] jugarCPU() {
 		Random rand = new Random();
 		int x = rand.nextInt(3), y = rand.nextInt(3);
 		while(tablero[x][y] == 'X' || tablero[x][y] == 'O') {
@@ -93,5 +99,8 @@ public class Tablero {
 		}
 		
 		tablero[x][y] = 'O';
+		int[] sol = {x,y};
+
+		return sol;
 	}
 }

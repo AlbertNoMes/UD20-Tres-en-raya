@@ -9,9 +9,12 @@ import javax.swing.border.EmptyBorder;
 
 import com.anm.TresEnRaya.Tablero;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
@@ -51,6 +54,7 @@ public class interfazG extends JFrame {
 	 * Create the frame.
 	 */
 	public interfazG() {
+		tablero = new Tablero();
 		setTitle("TRES EN RAYA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 405);
@@ -69,7 +73,12 @@ public class interfazG extends JFrame {
 		btn00.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				tablero.jugarCasilla('X', 0, 0);
+				if(tablero.jugarCasilla('X', 0, 0)) {
+					final JButton aux = (JButton)e.getSource();
+					ImageIcon img = new ImageIcon(interfazG.class.getResource("/img/cruz.png"));
+					img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
+					aux.setIcon(img);
+				}
 			}
 		});
 		btn00.setBounds(10, 11, 100, 100);
