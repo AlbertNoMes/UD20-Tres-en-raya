@@ -15,15 +15,6 @@ public class Tablero {
 	
 	public Tablero() {
 		tablero = new char[3][3];
-		CPU = false;
-	}
-	
-	public boolean isCPU() {
-		return CPU;
-	}
-
-	public void setCPU(boolean cPU) {
-		CPU = cPU;
 	}
 
 	public boolean jugarCasilla(char op, int x,int y) {
@@ -102,6 +93,9 @@ public class Tablero {
 		return new Pair<Boolean, Character>(fin,ganador);
 	}
 	
+	public void reiniciarPartida() {
+		tablero = new char[3][3];
+	}
 	
 	public int[] jugarCPU() {
 		Random rand = new Random();
@@ -112,6 +106,13 @@ public class Tablero {
 		}
 		
 		tablero[x][y] = 'O';
+		
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 3; j++)
+				System.out.print(tablero[j][i]);
+			System.out.println("\n");
+		}
+		
 		int[] sol = {x,y};
 
 		return sol;

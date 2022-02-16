@@ -29,6 +29,7 @@ import java.awt.event.ActionEvent;
 
 public class interfazG extends JFrame {
 
+	private boolean CPU;
 	private int cont1;
 	private int cont2;
 	private JPanel contentPane;
@@ -74,12 +75,6 @@ public class interfazG extends JFrame {
 		panelButtons.setBounds(10, 11, 340, 345);
 		contentPane.add(panelButtons);
 		panelButtons.setLayout(null);
-		
-		
-		JButton btnNewGame = new JButton("Nueva Partida");
-		btnNewGame.setFont(new Font("Arial", Font.BOLD, 15));
-		btnNewGame.setBounds(425, 11, 133, 23);
-		contentPane.add(btnNewGame);
 		
 		JLabel lblTurno = new JLabel("Turno");
 		lblTurno.setFont(new Font("Arial", Font.BOLD, 12));
@@ -139,10 +134,22 @@ public class interfazG extends JFrame {
 		panelPlayer2.add(lblTipo2);
 		
 		JRadioButton rdbtnHumano2 = new JRadioButton("Humano",false);
+		rdbtnHumano2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				CPU = ((JRadioButton)e.getSource()).isSelected();
+			}
+		});
 		rdbtnHumano2.setBounds(51, 91, 86, 23);
 		panelPlayer2.add(rdbtnHumano2);
 		
 		JRadioButton rdbtnCPU2 = new JRadioButton("CPU",true);
+		rdbtnCPU2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				CPU = ((JRadioButton)e.getSource()).isSelected();
+			}
+		});
 		rdbtnCPU2.setBounds(139, 91, 50, 23);
 		panelPlayer2.add(rdbtnCPU2);
 		
@@ -150,12 +157,14 @@ public class interfazG extends JFrame {
 		bgroup.add(rdbtnHumano2);
 		bgroup.add(rdbtnCPU2);
 		
+		CPU = rdbtnCPU2.isSelected();
+		
 		final JLabel lblPartidasGanadas_1 = new JLabel("Partidas Ganadas:");
 		lblPartidasGanadas_1.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblPartidasGanadas_1.setBounds(80, 10, 105, 14);
 		panelPlayer2.add(lblPartidasGanadas_1);
 		
-		JButton btn00 = new JButton("");
+		final JButton btn00 = new JButton("");
 		btn00.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -169,11 +178,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -185,8 +189,15 @@ public class interfazG extends JFrame {
 								lblPartidasGanadas_1.setText("Partidas ganadas: " + cont2);
 								
 							}
-						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -194,7 +205,7 @@ public class interfazG extends JFrame {
 		btn00.setBounds(10, 11, 100, 100);
 		panelButtons.add(btn00);
 		
-		JButton btn10 = new JButton("");
+		final JButton btn10 = new JButton("");
 		btn10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -208,11 +219,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -226,6 +232,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -234,7 +248,7 @@ public class interfazG extends JFrame {
 		btn10.setBounds(120, 11, 100, 100);
 		panelButtons.add(btn10);
 		
-		JButton btn20 = new JButton("");
+		final JButton btn20 = new JButton("");
 		btn20.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -248,11 +262,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -266,6 +275,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 								
 						
 					}
@@ -276,7 +293,7 @@ public class interfazG extends JFrame {
 		btn20.setBounds(230, 11, 100, 100);
 		panelButtons.add(btn20);
 		
-		JButton btn01 = new JButton("");
+		final JButton btn01 = new JButton("");
 		btn01.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -290,11 +307,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -308,6 +320,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -315,7 +335,7 @@ public class interfazG extends JFrame {
 		btn01.setBounds(10, 122, 100, 100);
 		panelButtons.add(btn01);
 		
-		JButton btn11 = new JButton("");
+		final JButton btn11 = new JButton("");
 		btn11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -329,11 +349,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 						
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -347,6 +362,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 						
 					}
 				}
@@ -356,7 +379,7 @@ public class interfazG extends JFrame {
 		btn11.setBounds(120, 122, 100, 100);
 		panelButtons.add(btn11);
 		
-		JButton btn21 = new JButton("");
+		final JButton btn21 = new JButton("");
 		btn21.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -370,11 +393,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -388,6 +406,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -396,7 +422,7 @@ public class interfazG extends JFrame {
 		btn21.setBounds(230, 122, 100, 100);
 		panelButtons.add(btn21);
 		
-		JButton btn02 = new JButton("");
+		final JButton btn02 = new JButton("");
 		btn02.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -410,11 +436,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -428,6 +449,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -436,7 +465,7 @@ public class interfazG extends JFrame {
 		btn02.setBounds(10, 233, 100, 100);
 		panelButtons.add(btn02);
 		
-		JButton btn12 = new JButton("");
+		final JButton btn12 = new JButton("");
 		btn12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -450,11 +479,6 @@ public class interfazG extends JFrame {
 							img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
-							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -468,6 +492,14 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
@@ -476,7 +508,7 @@ public class interfazG extends JFrame {
 		btn12.setBounds(120, 233, 100, 100);
 		panelButtons.add(btn12);
 		
-		JButton btn22 = new JButton("");
+		final JButton btn22 = new JButton("");
 		btn22.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -491,10 +523,6 @@ public class interfazG extends JFrame {
 						img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
 						aux.setIcon(img);
 							
-						if(opcion == 'X')
-							opcion = 'O';
-						else
-							opcion = 'X';
 
 						if(tablero.finDeJuego().getKey()) {
 							if(tablero.finDeJuego().getValue() == 'X') {
@@ -508,12 +536,59 @@ public class interfazG extends JFrame {
 							}
 						
 						}
+						else
+							if(CPU)
+								jugarCPU();
+							else
+								if(opcion == 'X')
+									opcion = 'O';
+								else
+									opcion = 'X';
 					}
 				}
 			}
 		});
 		btn22.setBounds(230, 233, 100, 100);
 		panelButtons.add(btn22);
+		
+		final JButton btnNewGame = new JButton("Nueva Partida");
+        btnNewGame.setFont(new Font("Arial", Font.BOLD, 15));
+        btnNewGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	opcion = 'X';
+            	tablero.reiniciarPartida();
+                btn00.setIcon(new ImageIcon());
+                btn00.setEnabled(true);
+                btn10.setIcon(new ImageIcon());
+                btn10.setEnabled(true);
+                btn20.setIcon(new ImageIcon());
+                btn20.setEnabled(true);
+                btn01.setIcon(new ImageIcon());
+                btn01.setEnabled(true);
+                btn11.setIcon(new ImageIcon());
+                btn11.setEnabled(true);
+                btn21.setIcon(new ImageIcon());
+                btn21.setEnabled(true);
+                btn02.setIcon(new ImageIcon());
+                btn02.setEnabled(true);
+                btn12.setIcon(new ImageIcon());
+                btn12.setEnabled(true);
+                btn22.setIcon(new ImageIcon());
+                btn22.setEnabled(true);
+            }
+        });
+        btnNewGame.setBounds(425, 11, 133, 23);
+        contentPane.add(btnNewGame);
+	}
+	
+	public void jugarCPU() {
+		int [] coord = tablero.jugarCPU();
+		
+		JButton boton = (JButton)((JPanel)contentPane.getComponents()[0]).getComponents()[3 * coord[1] + coord[0]];
+		ImageIcon img;
+		img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
+		img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
+		boton.setIcon(img);
 	}
 	
 	public void print(String s) {
