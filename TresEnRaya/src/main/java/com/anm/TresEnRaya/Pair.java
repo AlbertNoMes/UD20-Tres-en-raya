@@ -1,6 +1,6 @@
 package com.anm.TresEnRaya;
 
-class Pair<T1, T2> {
+public class Pair<T1, T2> {
     private final T1 key;
     private final T2 value;
 

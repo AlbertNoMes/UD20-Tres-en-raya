@@ -37,7 +37,7 @@ public class Tablero {
 	
 	public Pair<Boolean,Character> finDeJuego() {
 		int contColumna = 0,contFila = 0, contDiagonal = 0;
-		char[] opciones = {'X','Y'};
+		char[] opciones = {'X','O'};
 		boolean fin = false;
 		char ganador = ' ';
 		for(char op : opciones) {
@@ -73,8 +73,9 @@ public class Tablero {
 			if(contFila == 3)
 				break;
 			
+
+			contDiagonal = 0;
 			for(int i = 0; i < 3; i++) {
-				contDiagonal = 0;
 				if(tablero[i][i] == op)
 					contDiagonal++;
 			}
@@ -85,9 +86,10 @@ public class Tablero {
 				break;
 			}
 			
+
+			contDiagonal = 0;
 			for(int i = 0; i < 3; i++) {
-				contDiagonal = 0;
-				if(tablero[i][3 - i] == op)
+				if(tablero[i][2 - i] == op)
 					contDiagonal++;
 			}
 			
