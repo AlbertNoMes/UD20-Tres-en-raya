@@ -6,6 +6,7 @@ import vista.interfazG;
 
 public class Tablero {
 	private char[][] tablero;
+	private boolean CPU;
 	/*
 	 * [1,1][2,1][3,1]
 	 * [1,2][2,2][3,2]
@@ -14,14 +15,24 @@ public class Tablero {
 	
 	public Tablero() {
 		tablero = new char[3][3];
+		CPU = false;
 	}
 	
+	public boolean isCPU() {
+		return CPU;
+	}
+
+	public void setCPU(boolean cPU) {
+		CPU = cPU;
+	}
+
 	public boolean jugarCasilla(char op, int x,int y) {
-		if(tablero[x][y] != 'X' && tablero[x][y] != 'O')
+		boolean comprobar = tablero[x][y] != 'X' && tablero[x][y] != 'O';
+		if(comprobar) 
 			if(x < 3 && x >= 0 && y < 3 && y >= 0 && (op == 'X' || op == 'O'))
 				tablero[x][y] = op;
 		
-		return tablero[x][y] != 'X' && tablero[x][y] != 'O';
+		return comprobar;
 	}
 	
 	public Pair<Boolean,Character> finDeJuego() {

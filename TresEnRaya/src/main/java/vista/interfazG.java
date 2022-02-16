@@ -68,7 +68,6 @@ public class interfazG extends JFrame {
 		panelButtons.setBounds(10, 11, 340, 345);
 		contentPane.add(panelButtons);
 		panelButtons.setLayout(null);
-		
 		JButton btn00 = new JButton("");
 		btn00.addMouseListener(new MouseAdapter() {
 			@Override
@@ -194,19 +193,6 @@ public class interfazG extends JFrame {
 		panelPlayer1.add(textField1);
 		textField1.setColumns(10);
 		
-		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setFont(new Font("Arial", Font.BOLD, 11));
-		lblTipo.setBounds(10, 95, 35, 14);
-		panelPlayer1.add(lblTipo);
-		
-		JRadioButton rdbtnHumano1 = new JRadioButton("Humano");
-		rdbtnHumano1.setBounds(51, 91, 70, 23);
-		panelPlayer1.add(rdbtnHumano1);
-		
-		JRadioButton rdbtnCPU1 = new JRadioButton("CPU");
-		rdbtnCPU1.setBounds(123, 91, 50, 23);
-		panelPlayer1.add(rdbtnCPU1);
-		
 		JLabel lblPartidasGanadas = new JLabel("Partidas Ganadas:");
 		lblPartidasGanadas.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblPartidasGanadas.setBounds(80, 11, 105, 14);
@@ -250,5 +236,9 @@ public class interfazG extends JFrame {
 		lblPartidasGanadas_1.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblPartidasGanadas_1.setBounds(80, 10, 105, 14);
 		panelPlayer2.add(lblPartidasGanadas_1);
+	}
+	
+	public void print(String s) {
+		System.out.print(s);
 	}
 }
