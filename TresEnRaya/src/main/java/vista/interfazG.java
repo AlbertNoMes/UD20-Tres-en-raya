@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.anm.TresEnRaya.Tablero;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -219,18 +220,22 @@ public class interfazG extends JFrame {
 		panelPlayer2.add(textField2);
 		textField2.setColumns(10);
 		
-		JLabel lblTipo_1 = new JLabel("Tipo:");
-		lblTipo_1.setFont(new Font("Arial", Font.BOLD, 11));
-		lblTipo_1.setBounds(10, 95, 35, 14);
-		panelPlayer2.add(lblTipo_1);
+		JLabel lblTipo2 = new JLabel("Tipo:");
+		lblTipo2.setFont(new Font("Arial", Font.BOLD, 11));
+		lblTipo2.setBounds(10, 95, 35, 14);
+		panelPlayer2.add(lblTipo2);
 		
 		JRadioButton rdbtnHumano2 = new JRadioButton("Humano");
-		rdbtnHumano2.setBounds(51, 91, 70, 23);
+		rdbtnHumano2.setBounds(51, 91, 86, 23);
 		panelPlayer2.add(rdbtnHumano2);
 		
 		JRadioButton rdbtnCPU2 = new JRadioButton("CPU");
-		rdbtnCPU2.setBounds(123, 91, 50, 23);
+		rdbtnCPU2.setBounds(139, 91, 50, 23);
 		panelPlayer2.add(rdbtnCPU2);
+		
+		ButtonGroup bgroup = new ButtonGroup();
+		bgroup.add(rdbtnHumano2);
+		bgroup.add(rdbtnCPU2);
 		
 		JLabel lblPartidasGanadas_1 = new JLabel("Partidas Ganadas:");
 		lblPartidasGanadas_1.setFont(new Font("Arial", Font.PLAIN, 11));
