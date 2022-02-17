@@ -97,24 +97,26 @@ public class Tablero {
 		tablero = new char[3][3];
 	}
 	
-	public int[] jugarCPU() {
-		Random rand = new Random();
-		int x = rand.nextInt(3), y = rand.nextInt(3);
-		while(tablero[x][y] == 'X' || tablero[x][y] == 'O') {
-			x = rand.nextInt(3);
-			y = rand.nextInt(3);
+	public Pair<Boolean,int[]> jugarCPU() {
+		boolean ok = false;
+		int[] sol = new int[2];
+		if(!finDeJuego().getKey()) {
+			Random rand = new Random();
+			int x = rand.nextInt(3), y = rand.nextInt(3);
+			while(tablero[x][y] == 'X' || tablero[x][y] == 'O') {
+				x = rand.nextInt(3);
+				y = rand.nextInt(3);
+			}
+			
+			tablero[x][y] = 'O';
+			
+			sol[0] = x;
+			sol[1] = y;
+			ok = true;
 		}
-		
-		tablero[x][y] = 'O';
-		
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++)
-				System.out.print(tablero[j][i]);
-			System.out.println("\n");
-		}
-		
-		int[] sol = {x,y};
+		else
+			ok = false;
 
-		return sol;
+		return new Pair(ok,sol);
 	}
 }

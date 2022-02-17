@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.anm.TresEnRaya.Pair;
 import com.anm.TresEnRaya.Tablero;
 
 import javax.swing.ButtonGroup;
@@ -147,7 +148,8 @@ public class interfazG extends JFrame {
 		rdbtnCPU2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				CPU = ((JRadioButton)e.getSource()).isSelected();
+				if(!((JRadioButton)e.getSource()).isSelected())
+					CPU = !((JRadioButton)e.getSource()).isSelected();
 			}
 		});
 		rdbtnCPU2.setBounds(139, 91, 50, 23);
@@ -582,13 +584,23 @@ public class interfazG extends JFrame {
 	}
 	
 	public void jugarCPU() {
-		int [] coord = tablero.jugarCPU();
-		
-		JButton boton = (JButton)((JPanel)contentPane.getComponents()[0]).getComponents()[3 * coord[1] + coord[0]];
-		ImageIcon img;
-		img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
-		img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
-		boton.setIcon(img);
+		Pair <Boolean,int[]> aux = tablero.jugarCPU();
+		if(aux.getKey()) {
+			int [] coord = aux.getValue();
+			
+			JButton boton = (JButton)((JPanel)contentPane.getComponents()[0]).getComponents()[3 * coord[1] + coord[0]];
+			ImageIcon img;
+			JLabel label = (JLabel)(((JPanel)contentPane.getComponents()[3]).getComponents()[6]);
+			
+			img = new ImageIcon(interfazG.class.getResource("/img/circulo.png"));
+			img = new ImageIcon(img.getImage().getScaledInstance(100, 100, DO_NOTHING_ON_CLOSE));
+			boton.setIcon(img);
+			
+			if(tablero.finDeJuego().getKey()) {
+				cont2++;
+				label.setText("Partidas Ganadas: " + cont2);
+			}
+		}
 	}
 	
 	public void print(String s) {
