@@ -7,6 +7,7 @@ import vista.interfazG;
 public class Tablero {
 	private char[][] tablero;
 	private boolean CPU;
+	private int turnos;
 	/*
 	 * [1,1][2,1][3,1]
 	 * [1,2][2,2][3,2]
@@ -15,13 +16,17 @@ public class Tablero {
 	
 	public Tablero() {
 		tablero = new char[3][3];
+		turnos = 0;
 	}
+
 
 	public boolean jugarCasilla(char op, int x,int y) {
 		boolean comprobar = tablero[x][y] != 'X' && tablero[x][y] != 'O';
 		if(comprobar) 
-			if(x < 3 && x >= 0 && y < 3 && y >= 0 && (op == 'X' || op == 'O'))
+			if(x < 3 && x >= 0 && y < 3 && y >= 0 && (op == 'X' || op == 'O')) {
 				tablero[x][y] = op;
+				turnos++;
+			}
 		
 		return comprobar;
 	}
@@ -90,17 +95,23 @@ public class Tablero {
 				break;
 			}
 		}
+		
+		
+		
 		return new Pair<Boolean, Character>(fin,ganador);
 	}
 	
+	
 	public void reiniciarPartida() {
 		tablero = new char[3][3];
+		turnos = 0;
 	}
+	
 	
 	public Pair<Boolean,int[]> jugarCPU() {
 		boolean ok = false;
 		int[] sol = new int[2];
-		if(!finDeJuego().getKey()) {
+		if(!finDeJuego().getKey() && turnos < 9) {
 			Random rand = new Random();
 			int x = rand.nextInt(3), y = rand.nextInt(3);
 			while(tablero[x][y] == 'X' || tablero[x][y] == 'O') {
@@ -113,6 +124,7 @@ public class Tablero {
 			sol[0] = x;
 			sol[1] = y;
 			ok = true;
+			turnos++;
 		}
 		else
 			ok = false;
