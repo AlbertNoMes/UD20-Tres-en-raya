@@ -6,7 +6,6 @@ import vista.interfazG;
 
 public class Tablero {
 	private char[][] tablero;
-	private boolean CPU;
 	private int turnos;
 	/*
 	 * [1,1][2,1][3,1]
@@ -19,7 +18,11 @@ public class Tablero {
 		turnos = 0;
 	}
 
-
+	/*
+	 * Esta funcion se encarga de colocar X o O en la casilla seleccionada
+	 * comprobando que no haya anteriormente colocado algo en esa misma 
+	 * casilla
+	 */
 	public boolean jugarCasilla(char op, int x,int y) {
 		boolean comprobar = tablero[x][y] != 'X' && tablero[x][y] != 'O';
 		if(comprobar) 
@@ -31,6 +34,11 @@ public class Tablero {
 		return comprobar;
 	}
 	
+	/*
+	 * Esta funcion se encarga de comprobar si el juego se ha acabado o no y quien ha ganado.
+	 * Devuelve un objeto Pair con un booleano para saber si la partida ha acabado y un char
+	 * para saber quien
+	 */
 	public Pair<Boolean,Character> finDeJuego() {
 		int contColumna = 0,contFila = 0, contDiagonal = 0;
 		char[] opciones = {'X','O'};
@@ -101,13 +109,20 @@ public class Tablero {
 		return new Pair<Boolean, Character>(fin,ganador);
 	}
 	
-	
+	/*
+	 * Funcion que vacia el tablero y reinicia los turnos
+	 */
 	public void reiniciarPartida() {
 		tablero = new char[3][3];
 		turnos = 0;
 	}
 	
-	
+	/*
+	 * Esta funcion se encarga de manegar los movimiento del ordenador, colocando
+	 * un O de manera aleatoria en el tablero. Devuelve un objeto Pair con un booleano 
+	 * para saber si se puede colocar o no un O y, si se puede, devuelve un array con 
+	 * la posicion
+	 */
 	public Pair<Boolean,int[]> jugarCPU() {
 		boolean ok = false;
 		int[] sol = new int[2];

@@ -268,6 +268,7 @@ public class interfazG extends JFrame {
 		btn22.setBounds(230, 233, 100, 100);
 		panelButtons.add(btn22);
 		
+		//Al pulsar este boton se reinica el tablero y comienza una nueva partida
 		final JButton btnNewGame = new JButton("Nueva Partida");
         btnNewGame.setFont(new Font("Arial", Font.BOLD, 15));
         btnNewGame.addActionListener(new ActionListener() {
@@ -319,6 +320,10 @@ public class interfazG extends JFrame {
 		}
 	}
 	
+	/*
+	 * Funcion que se encarga de toda la logica de los turnos. Actualizando los labels
+	 * o botones cuando sea necesario. 
+	 */
 	public void jugarTurno(JLabel t, JLabel j1, JLabel j2, JLabel l1, JLabel l2, JButton b, int x, int y,boolean aux) {
 		if(!textField1.getText().equals("")) {
 			if(!tablero.finDeJuego().getKey()) {
